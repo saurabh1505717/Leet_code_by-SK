@@ -2,9 +2,10 @@ class Solution {
 public:
     vector<vector<int>> generate(int numRows) {
         vector<vector<int>> triangle;
-        if(numRows==0){
-            return triangle;
-        }triangle.push_back(vector<int>({1}));
+        // if(numRows==0){
+        //     return triangle;
+        // }
+        triangle.push_back(vector<int>({1}));
         for(int i=1; i<numRows; i++){
             vector<int> curRow(i+1);
             curRow.front()=1;
