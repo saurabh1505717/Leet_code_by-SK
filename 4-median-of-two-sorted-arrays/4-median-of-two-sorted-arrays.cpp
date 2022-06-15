@@ -8,7 +8,7 @@ public:
         int start=0, end=nums1.size()-1;
         int mid = (start+(end-start))/2;
         if(nums1.size()%2==0){
-               median=(nums1[mid])/2.0+(nums1[mid+1])/2.0;
+               median=(nums1[mid]+nums1[mid+1])/2.0;
         }
         else{
             median=nums1[mid];
