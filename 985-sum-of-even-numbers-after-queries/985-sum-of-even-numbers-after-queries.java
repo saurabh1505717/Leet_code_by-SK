@@ -16,18 +16,17 @@ class Solution {
             if(temp%2==0 && nums[queries[i][1]]%2==0){
                 sum=sum-temp+nums[queries[i][1]];
             }
-            if(temp%2==0 && nums[queries[i][1]]%2!=0){
+            else if(temp%2==0 && nums[queries[i][1]]%2!=0){
                 sum=sum-temp;
             }
-            if(temp%2!=0 && nums[queries[i][1]]%2==0){
+            else if(temp%2!=0 && nums[queries[i][1]]%2==0){
                 sum=sum+nums[queries[i][1]];
             }
-//             else{
-                
-//             }
+            else{
+                int x=0;
+            }
             
             ans_Array[i]=sum;
-            System.out.println(sum);
             added_element=sum;
         }
         return ans_Array;
