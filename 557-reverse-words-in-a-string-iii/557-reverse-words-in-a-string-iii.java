@@ -1,24 +1,24 @@
 class Solution {
 
     public String reverseWords(String s) {
-        int lastSpaceIndex = -1;
-        char[] chArray = s.toCharArray();
-        int len = s.length();
-        for (int strIndex = 0; strIndex <= len; strIndex++) {
-            if (strIndex == len || chArray[strIndex] == ' ') {
-                int startIndex = lastSpaceIndex + 1;
-                int endIndex = strIndex - 1;
-                while (startIndex < endIndex) {
-                    char temp = chArray[startIndex];
-                    chArray[startIndex] = chArray[endIndex];
-                    chArray[endIndex] = temp;
-                    startIndex++;
-                    endIndex--;
-                }
-                lastSpaceIndex = strIndex;
+        String[] parts=s.split(" ");
+        String res="";
+        String final_res="";
+        for(int i=0; i<parts.length; i++){
+            String element=parts[i];
+            String rstr="";
+            for(int j=0; j<element.length(); j++){
+                char ch = element.charAt(j);
+                rstr=ch+rstr;
             }
+            res=res+rstr;
+            res+=" ";
         }
-        return new String(chArray);
+        for(int i=0; i<res.length()-1; i++){
+            final_res+=res.charAt(i);
+            
+        }
+        return final_res;
     }
 
 }
