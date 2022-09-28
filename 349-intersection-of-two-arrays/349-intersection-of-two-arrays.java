@@ -8,10 +8,6 @@ class Solution {
                 hm.put(nums1[i],1);
             }
         }
-        for(int key:hm.keySet()){
-            int val=hm.get(key);
-            System.out.println(key+" "+val);
-        }
         int j=0;
         ArrayList<Integer>ans=new ArrayList<>();
         
