@@ -7,8 +7,7 @@ class Solution {
         char[] s=palindrome.toCharArray();
         
         for(int i=0; i<s.length/2; i++){
-            char alphabet=s[i];
-            if(alphabet!='a'){
+            if(s[i]!='a'){
                 s[i]='a';
                 return String.valueOf(s);
             }
