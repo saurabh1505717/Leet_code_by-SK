@@ -22,7 +22,6 @@ public class Solution {
         while(headB!=null){
             if(set.containsKey(headB)){
                 return headB;
-                // break;
             }
             headB=headB.next;
         }
