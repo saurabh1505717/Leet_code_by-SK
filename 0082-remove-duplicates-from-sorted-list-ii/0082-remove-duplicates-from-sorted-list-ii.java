@@ -43,7 +43,6 @@ class Solution {
         ListNode dummy=new ListNode(5,null);
         temp=dummy;
         for(int val:al){
-            // int val=arr[i];
             ListNode val1= new ListNode(val,null);
             temp.next=val1;
             temp=temp.next;
