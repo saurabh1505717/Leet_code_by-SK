@@ -7,7 +7,7 @@ class Solution {
             res.add(list);
             return res;
         }
-        List<List<String>> res=new ArrayList<>();
+        // List<List<String>> res=new ArrayList<>();
         HashMap<String, List<String>>hm=new HashMap<>();
         for(String word:strs){
             char[] arr=word.toCharArray();
