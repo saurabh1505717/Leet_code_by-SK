@@ -18,12 +18,12 @@ class Solution {
                 break;
             }
         }
-        // ans[0]=dup;
-        // ans[1]=missing;
+        ans[0]=dup;
+        ans[1]=missing;
         
-        return new int[]{dup, missing};
+        // return new int[]{dup, missing};
         
        
-        // return ans;
+        return ans;
     }
 }
