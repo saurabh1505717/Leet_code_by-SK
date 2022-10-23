@@ -22,10 +22,12 @@ class Solution {
                 hm.put(key, list);
             }
         }
-        for(String s:hm.keySet()){
-            List<String> ansList=hm.get(s);
-            res.add(ansList);
-        }
-        return res;
+        // for(String s:hm.keySet()){
+        //     List<String> ansList=hm.get(s);
+        //     res.add(ansList);
+        // }
+        // return res;
+        
+        return new ArrayList<>(hm.values());
     }
 }
