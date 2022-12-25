@@ -4,7 +4,6 @@ class Solution {
         Arrays.sort(nums);
         
         int sum=Arrays.stream(nums).sum();
-        System.out.println(sum);
         for(int i=0; i<queries.length; i++){
             int j=nums.length-1;
             int presentSum=sum;
@@ -12,7 +11,6 @@ class Solution {
                 presentSum=presentSum-nums[j];
                 j--;
             }
-            System.out.println(j);
             ans[i]=j+1;;
         }
         return ans;
