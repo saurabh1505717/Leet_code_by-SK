@@ -9,9 +9,9 @@ class Allocator {
     }
     
     public int allocate(int size, int mID) {
-        if(size>arr.length){
-            return -1;
-        }
+        // if(size>arr.length){
+        //     return -1;
+        // }
         int startIndex=0, count=0, flag=0;
         for(int i=0; i<arr.length; i++){
             if(arr[i]==-1){
