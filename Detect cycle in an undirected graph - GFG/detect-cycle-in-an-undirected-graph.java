@@ -33,44 +33,30 @@ class GFG {
 
 
 class Solution {
-    public class Pair{
-        int node;
-        int parent;
-        Pair(int _node, int _parent){
-            this.node=_node;
-            this.parent=_parent;
-        }
-    }
+    // public class Pair{
+    //     int node;
+    //     int parent;
+    //     Pair(int _node, int _parent){
+    //         this.node=_node;
+    //         this.parent=_parent;
+    //     }
+    // }
     
-    public boolean detectCycleBFS(int src, int V, ArrayList<ArrayList<Integer>>adj, boolean[]vis){
-        vis[src]=true;
-        Queue<Pair>q=new LinkedList<>();
-        q.add(new Pair(src, -1));
-        while(!q.isEmpty()){
-            int currNode=q.peek().node;
-            int parentNode=q.peek().parent;
-            q.remove();
+    // public boolean detectCycleBFS(int src, int V, ArrayList<ArrayList<Integer>>adj, boolean[]vis){
+    //     vis[src]=true;
+    //     Queue<Pair>q=new LinkedList<>();
+    //     q.add(new Pair(src, -1));
+    //     while(!q.isEmpty()){
+    //         int currNode=q.peek().node;
+    //         int parentNode=q.peek().parent;
+    //         q.remove();
             
-            for(Integer it:adj.get(currNode)){
-                if(vis[it]==false){
-                    vis[it]=true;
-                    q.add(new Pair(it, currNode));
-                }
-                else if(parentNode!=it){
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-    
-    // private boolean detectCycleDFS(int node, int parent,  int []vis, ArrayList<ArrayList<Integer>>adj){
-    //     vis[node]=1;
-    //     for(int adjacentNode:adj.get(node)){
-    //         if(vis[adjacentNode]==0){
-    //             if(detectCycleDFS(adjacentNode, node, vis, adj)==true){
-    //                 return true;
-    //             }else if(adjacentNode!=parent){
+    //         for(Integer it:adj.get(currNode)){
+    //             if(vis[it]==false){
+    //                 vis[it]=true;
+    //                 q.add(new Pair(it, currNode));
+    //             }
+    //             else if(parentNode!=it){
     //                 return true;
     //             }
     //         }
@@ -78,27 +64,39 @@ class Solution {
     //     return false;
     // }
     
-    public boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj) {
-        boolean[] vis=new boolean[V];
-        Arrays.fill(vis, false);
-        for(int i=0; i<V; i++){
-            if(vis[i]==false){
-                if(detectCycleBFS(i, V, adj, vis)==true){
-                    return true;
-                }
+    private boolean dfs(int node, int parent, int vis[], ArrayList<ArrayList<Integer>> 
+    adj) {
+        vis[node] = 1; 
+        // go to all adjacent nodes
+        for(int adjacentNode: adj.get(node)) {
+            if(vis[adjacentNode]==0) {
+                if(dfs(adjacentNode, node, vis, adj) == true) 
+                    return true; 
             }
+            // if adjacent node is visited and is not its own parent node
+            else if(adjacentNode != parent) return true; 
         }
-        return false;
-        
-        // int[] vis=new int[V];
-        // // Arrays.fill(vis, false);
+        return false; 
+    }
+    
+    public boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj) {
+        // boolean[] vis=new boolean[V];
+        // Arrays.fill(vis, false);
         // for(int i=0; i<V; i++){
-        //     if(vis[i]==0){
-        //         if(detectCycleDFS(i, -1, vis, adj)==true){
+        //     if(vis[i]==false){
+        //         if(detectCycleBFS(i, V, adj, vis)==true){
         //             return true;
-        //         }   
+        //         }
         //     }
         // }
         // return false;
+        
+        int vis[] = new int[V]; 
+       for(int i = 0;i<V;i++) {
+           if(vis[i] == 0) {
+               if(dfs(i, -1, vis, adj) == true) return true; 
+           }
+       }
+       return false; 
     }
 }
