@@ -74,7 +74,7 @@ class Solution
         }
         
         for(int i=0; i<m ; i++){
-            adj.get(prerequisites.get(i).get(1)).add(prerequisites.get(i).get(0));
+            adj.get(prerequisites.get(i).get(0)).add(prerequisites.get(i).get(0));
         }
         
         int []indegree=new int[n];
