@@ -60,32 +60,63 @@ class Main {
 
 class Solution
 {
-    private static void dfs(int node, ArrayList<ArrayList<Integer>>adj, int[]vis, Stack<Integer>st){
-        vis[node]=1;
-        for(int it: adj.get(node)){
-            if(vis[it]==0){
-                dfs(it, adj, vis, st);
-            }
-        }
-        st.push(node);
-    }
+    // private static void dfs(int node, ArrayList<ArrayList<Integer>>adj, int[]vis, Stack<Integer>st){
+    //     vis[node]=1;
+    //     for(int it: adj.get(node)){
+    //         if(vis[it]==0){
+    //             dfs(it, adj, vis, st);
+    //         }
+    //     }
+    //     st.push(node);
+    // }
     
     //Function to return list containing vertices in Topological order. 
     static int[] topoSort(int V, ArrayList<ArrayList<Integer>> adj) 
     {
-        int vis[]=new int[V];
-        Stack<Integer>st=new Stack<>();
+        // int vis[]=new int[V];
+        // Stack<Integer>st=new Stack<>();
+        // for(int i=0; i<V; i++){
+        //     if(vis[i]==0){
+        //         dfs(i, adj, vis, st);
+        //     }
+        // }
+        
+        // int[]ans=new int[V];
+        // int j=0;
+        // while(!st.isEmpty()){
+        //     ans[j++]=st.pop();
+        // }
+        // return ans;
+        
+        
+        // Now solving it using bfs(KAHN's Algorithm)
+        int inDegree[]=new int[V];
         for(int i=0; i<V; i++){
-            if(vis[i]==0){
-                dfs(i, adj, vis, st);
+            for(int nbr: adj.get(i)){
+                inDegree[nbr]++;
             }
         }
         
-        int[]ans=new int[V];
-        int j=0;
-        while(!st.isEmpty()){
-            ans[j++]=st.pop();
+        Queue<Integer>q=new LinkedList<>();
+        for(int i=0; i<V; i++){
+            if(inDegree[i]==0){
+                q.add(i);
+            }
         }
-        return ans;
+        
+        int []topoAns=new int[V];
+        int j=0;
+        while(!q.isEmpty()){
+            int node=q.peek();
+            q.remove();
+            topoAns[j++]=node;
+            for(int nbrs:adj.get(node)){
+                inDegree[nbrs]--;
+                if(inDegree[nbrs]==0){
+                    q.add(nbrs);
+                }
+            }
+        }
+        return topoAns;
     }
 }
