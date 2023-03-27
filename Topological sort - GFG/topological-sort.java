@@ -111,7 +111,9 @@ class Solution
             q.remove();
             topoAns[j++]=node;
             for(int nbrs:adj.get(node)){
-                inDegree[nbrs]--;
+                if(inDegree[nbrs]>0){
+                    inDegree[nbrs]--;
+                }
                 if(inDegree[nbrs]==0){
                     q.add(nbrs);
                 }
