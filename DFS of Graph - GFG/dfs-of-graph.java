@@ -50,7 +50,11 @@ class Solution {
         ArrayList<Integer>dfsList=new ArrayList<>();
         boolean[] vis=new boolean[V];
         vis[0]=true;
-        DFStraversal(0, adj, vis, dfsList);
+        for(int i=0; i<V; i++){
+            if(vis[i]==false){
+                DFStraversal(0, adj, vis, dfsList);
+            }
+        }
         return dfsList;
     }
 }
