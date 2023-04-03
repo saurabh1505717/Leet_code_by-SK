@@ -60,9 +60,10 @@ class Solution
                 if(grid[i][j]==1){
                     q.add(new Pair(i, j, 0));
                     vis[i][j]=1;
-                }else{
-                    vis[i][j]=0;
                 }
+                // else{
+                //     vis[i][j]=0;
+                // }
             }
         }
         
