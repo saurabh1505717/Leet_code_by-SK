@@ -32,29 +32,33 @@ class DriverClass {
 /*Complete the function below*/
 
 class Solution {
-    private boolean dfs(int node, ArrayList<ArrayList<Integer>>adj, int []vis, int[] pathVis){
-        vis[node]=1;
-        pathVis[node]=1;
+    private boolean dfs(int node, ArrayList<ArrayList<Integer>>adj, int []vis){
+        vis[node]=2;
+        // pathVis[node]=1;
         for(int adjNode:adj.get(node)){
             if(vis[adjNode]==0){
-                if(dfs(adjNode, adj, vis, pathVis)==true){
+                if(dfs(adjNode, adj, vis)==true){
                     return true;
                 }
             }
-            else if(vis[adjNode]==1 && pathVis[adjNode]==1){
+            // else if(vis[adjNode]==1 && pathVis[adjNode]==1){
+            
+            // OR
+            
+            else if(vis[adjNode]==2){
                 return true; 
             }
         }
-        pathVis[node]=0;
+        vis[node]=1;
         return false;
     }
     
     public boolean isCyclic(int V, ArrayList<ArrayList<Integer>> adj) {
         int vis[]=new int[V];
-        int pathVis[]=new int[V];
+        // int pathVis[]=new int[V];
         for(int i=0; i<V; i++){
             if(vis[i]==0){
-                if(dfs(i, adj, vis, pathVis)==true){
+                if(dfs(i, adj, vis)==true){
                     return true;
                 }
             }
