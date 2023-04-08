@@ -60,11 +60,11 @@ class Main {
 
 class Solution
 {
-    private static void dfs(int node, ArrayList<ArrayList<Integer>>adj, int[]vis, Stack<Integer>st){
+    private static void dfs(int node, ArrayList<ArrayList<Integer>>adj, int[] vis, Stack<Integer>st){
         vis[node]=1;
-        for(int it: adj.get(node)){
-            if(vis[it]==0){
-                dfs(it, adj, vis, st);
+        for(int adjNode:adj.get(node)){
+            if(vis[adjNode]==0){
+                dfs(adjNode, adj, vis, st);
             }
         }
         st.push(node);
@@ -87,36 +87,5 @@ class Solution
             ans[j++]=st.pop();
         }
         return ans;
-        
-        
-        // Now solving it using bfs(KAHN's Algorithm)
-        // int inDegree[]=new int[V];
-        // for(int i=0; i<V; i++){
-        //     for(int nbr: adj.get(i)){
-        //         inDegree[nbr]++;
-        //     }
-        // }
-        
-        // Queue<Integer>q=new LinkedList<>();
-        // for(int i=0; i<V; i++){
-        //     if(inDegree[i]==0){
-        //         q.add(i);
-        //     }
-        // }
-        
-        // int []topoAns=new int[V];
-        // int j=0;
-        // while(!q.isEmpty()){
-        //     int node=q.peek();
-        //     q.remove();
-        //     topoAns[j++]=node;
-        //     for(int nbrs:adj.get(node)){
-        //         inDegree[nbrs]--;
-        //         if(inDegree[nbrs]==0){
-        //             q.add(nbrs);
-        //         }
-        //     }
-        // }
-        // return topoAns;
     }
 }
